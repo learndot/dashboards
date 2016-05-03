@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Learndot User Metrics</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <link rel="stylesheet" type="text/css" href="../../assets/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../assets/css/keen-dashboards.css" />
+</head>
+<body class="application" style="background: #3e4345 !important; padding-top: 10px">
+<div class="container-fluid">
+    <div>
+        <img src="../../assets/img/learndot-white.png"/>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            User Signins by week
+          </div>
+          <div class="chart-stage" id="chart01">
+            <div id="grid-1-1">
+
+            </div>
+          </div>
+          <div class="chart-notes">
+            Shown for the past 90 days
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage" id="chart02">
+
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage" id="chart03">
+
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- end of three -->
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage" id="chart04">
+
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage" id="chart05">
+
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Admin - Started Creating Course vs Finished Creating Course
+          </div>
+          <div class="chart-stage" id="chart06">
+
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- end of three -->
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Learner Signins today
+          </div>
+          <div class="chart-stage" id="chart07">
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Learner Signins today
+          </div>
+          <div class="chart-stage" id="chart08">
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage" id="chart09">
+            <div id="grid-1-1">
+            </div>
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+
+      <!-- <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Admin Signins today
+          </div>
+          <div class="chart-stage" id="chart08">
+
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage" id="chart09">
+
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+
+
+    <hr>
+
+    <p class="small text-muted">Built with &#9829; by <a href="https://keen.io">Keen IO</a></p>
+
+  </div>
+
+  <script type="text/javascript" src="../../assets/lib/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../../assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="../../assets/lib/holderjs/holder.js"></script>
+  <script>
+    Holder.add_theme("white", { background:"#fff", foreground:"#a7a7a7", size:10 });
+  </script>
+
+  <script type="text/javascript" src="../../assets/lib/keen-js/dist/keen.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/meta.js"></script>
+
+    <script>
+
+
+
+    </script>
+
+<!--User Signins by week for past 90 days-->
+
+  <script>
+      var client = new Keen({
+                            projectId: "56b4f0202fd4b10483c74f55",
+                            readKey: "c07f53441ecce154a90f3286fa5256d006fa8b30de697e36303c6c7e7bdbbd81280c304de8927b5b6f908439538b06193ca3c6756d3a21f563a82236b44fcc727ecacceadb6a7f3e06842c34b1ae6802d296089bcb9ee04a8b5a09fb6a1a64d7"
+
+                            });
+
+                            Keen.ready(function(){
+
+                                       var query = new Keen.Query("count", {
+                                                                  eventCollection: "User Signin",
+                                                                  interval: "weekly",
+                                                                  timeframe: "this_3_months",
+                                                                  timezone: "UTC"
+                                                                  });
+
+                                       client.draw(query, document.getElementById("chart01"), {
+                                                   series: [
+                                                            {color: 'red', visibleInLegend: false}
+                                                            ]
+                                                   });
+
+                                       });
+    </script>
+
+<!--User course completaions for past 90 days-->
+  <script>
+      var client = new Keen({
+                            projectId: "56b4f0202fd4b10483c74f55",
+                            readKey: "c07f53441ecce154a90f3286fa5256d006fa8b30de697e36303c6c7e7bdbbd81280c304de8927b5b6f908439538b06193ca3c6756d3a21f563a82236b44fcc727ecacceadb6a7f3e06842c34b1ae6802d296089bcb9ee04a8b5a09fb6a1a64d7"
+
+                            });
+
+                            Keen.ready(function(){
+
+                                       var query = new Keen.Query("count", {
+                                                                  eventCollection: "Completed Course",
+                                                                  interval: "weekly",
+                                                                  timeframe: "this_3_months",
+                                                                  timezone: "UTC"
+                                                                  });
+
+                                       client.draw(query, document.getElementById("chart02"), {
+                                                   // Custom configuration here
+                                                   });
+
+                                       });
+    </script>
+
+<!--User Signins by Organization for last 3 months-->
+  <script>
+      var client = new Keen({
+                            projectId: "56b4f0202fd4b10483c74f55",
+                            readKey: "c07f53441ecce154a90f3286fa5256d006fa8b30de697e36303c6c7e7bdbbd81280c304de8927b5b6f908439538b06193ca3c6756d3a21f563a82236b44fcc727ecacceadb6a7f3e06842c34b1ae6802d296089bcb9ee04a8b5a09fb6a1a64d7"
+
+                            });
+
+                            Keen.ready(function(){
+
+                              var query = new Keen.Query("count", {
+                                eventCollection: "User Signin",
+                                groupBy: [
+                                "user.traits.organizationName"
+                            ],
+                                interval: "daily",
+                                timeframe: "this_90_days",
+                                timezone: "UTC"
+                              });
+
+                                       client.draw(query, document.getElementById("chart09"), {
+                                          height: 360,
+                                          width: "100%",
+                                          chartArea: {width:"60%"},
+                                           series: [
+                                                    {color: 'orange', visibleInLegend: false}
+                                                    ]
+
+                                           });
+
+                                       });
+      </script>
+<!--Admin Signins by week for past 90 days-->
+    <script>
+        var client2 = new Keen({
+                              projectId: "56b4ed7d6f31a2120740cbd9",
+                              readKey: "78531e79e832670c0b6ac7c3742c66844f1b230ef71994ed0d857c572e60f2961d1a02f4f831f6ed5ca5298ebb64f610918bcdfb15a1e9164d07394f0c525277b37f822f2e9137231bbef43375ce871923ec30b75acc9f9298f1e12cd0628ce1"
+
+                              });
+
+                              Keen.ready(function(){
+
+                                         var query = new Keen.Query("count", {
+                                                                    eventCollection: "Admin Signin",
+                                                                    interval: "weekly",
+                                                                    timeframe: "this_3_months",
+                                                                    timezone: "UTC"
+                                                                    });
+
+                                         client2.draw(query, document.getElementById("chart04"), {
+                                                      series: [
+                                                               {color: 'purple', visibleInLegend: false}
+                                                               ]
+                                                     });
+
+                                         });
+    </script>
+
+    <script>
+
+        var client2 = new Keen({
+                              projectId: "56b4ed7d6f31a2120740cbd9",
+                              readKey: "78531e79e832670c0b6ac7c3742c66844f1b230ef71994ed0d857c572e60f2961d1a02f4f831f6ed5ca5298ebb64f610918bcdfb15a1e9164d07394f0c525277b37f822f2e9137231bbef43375ce871923ec30b75acc9f9298f1e12cd0628ce1"
+
+                              });
+
+                              Keen.ready(function(){
+
+                                         var query = new Keen.Query("count", {
+                                                                    eventCollection: "Started Creating Course",
+                                                                    interval: "weekly",
+                                                                    timeframe: "this_3_months",
+                                                                    timezone: "UTC"
+                                                                    });
+
+                                         client2.draw(query, document.getElementById("chart05"), {
+                                                      series: [
+                                                               {color: 'orange', visibleInLegend: false}
+                                                               ]
+                                                     });
+
+                                         });
+    </script>
+
+    <script>
+        var client2 = new Keen({
+                              projectId: "56b4ed7d6f31a2120740cbd9",
+                              readKey: "78531e79e832670c0b6ac7c3742c66844f1b230ef71994ed0d857c572e60f2961d1a02f4f831f6ed5ca5298ebb64f610918bcdfb15a1e9164d07394f0c525277b37f822f2e9137231bbef43375ce871923ec30b75acc9f9298f1e12cd0628ce1"
+
+                              });
+
+                              Keen.ready(function(){
+
+                                         var query = new Keen.Query("count", {
+                                                                    eventCollection: "Finished Creating Course",
+                                                                    interval: "weekly",
+                                                                    timeframe: "this_3_months",
+                                                                    timezone: "UTC"
+                                                                    });
+
+                                         client2.draw(query, document.getElementById("chart06"), {
+                                                      series: [
+                                                               {color: 'yellow', visibleInLegend: false}
+                                                               ]
+                                                     });
+
+                                         });
+    </script>
+
+    <script>
+        var client = new Keen({
+                              projectId: "56b4f0202fd4b10483c74f55",
+                              readKey: "c07f53441ecce154a90f3286fa5256d006fa8b30de697e36303c6c7e7bdbbd81280c304de8927b5b6f908439538b06193ca3c6756d3a21f563a82236b44fcc727ecacceadb6a7f3e06842c34b1ae6802d296089bcb9ee04a8b5a09fb6a1a64d7"
+
+                              });
+
+                              Keen.ready(function(){
+
+                                         var query = new Keen.Query("count", {
+                                                                    eventCollection: "User Signin",
+                                                                    timeframe: "this_1_days",
+                                                                    timezone: "UTC"
+                                                                    });
+
+                                         client.draw(query, document.getElementById("chart07"), {
+                                                     colors: ["lightgreen"]
+                                                     });
+                                         });
+    </script>
+
+    <script>
+        var client2 = new Keen({
+                              projectId: "56b4ed7d6f31a2120740cbd9",
+                              readKey: "78531e79e832670c0b6ac7c3742c66844f1b230ef71994ed0d857c572e60f2961d1a02f4f831f6ed5ca5298ebb64f610918bcdfb15a1e9164d07394f0c525277b37f822f2e9137231bbef43375ce871923ec30b75acc9f9298f1e12cd0628ce1"
+
+                              });
+
+                              Keen.ready(function(){
+
+                                         var query = new Keen.Query("count", {
+                                                                    eventCollection: "Admin Signin",
+                                                                    timeframe: "this_1_days",
+                                                                    timezone: "UTC"
+                                                                    });
+
+                                         client2.draw(query, document.getElementById("chart08"), {
+                                                     colors: ["lightgreen"]
+                                                     });
+
+                                         });
+    </script>
+
+    <script>
+        var client = new Keen({
+                              projectId: "56b4f0202fd4b10483c74f55",
+                              readKey: "c07f53441ecce154a90f3286fa5256d006fa8b30de697e36303c6c7e7bdbbd81280c304de8927b5b6f908439538b06193ca3c6756d3a21f563a82236b44fcc727ecacceadb6a7f3e06842c34b1ae6802d296089bcb9ee04a8b5a09fb6a1a64d7"
+
+                              });
+
+                              Keen.ready(function(){
+
+                                         var query = new Keen.Query("count", {
+                                                                    eventCollection: "Completed Course",
+                                                                    timeframe: "this_1_days",
+                                                                    timezone: "UTC"
+                                                                    });
+
+                                         client.draw(query, document.getElementById("chart03"), {
+                                            height: "100%",
+                                            colors: ["lightgreen"]
+                                          });
+
+                                         });
+    </script>
+
+    <script>
+        setInterval(function() {
+                    window.location.reload();
+                    }, 300000);
+    </script>
+
+
+</body>
+</html>

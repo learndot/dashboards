@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Learndot Course Retakes</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <link rel="stylesheet" type="text/css" href="../assets/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../assets/css/keen-dashboards.css" />
+</head>
+<body class="application" style="background: #3e4345 !important; padding-top: 10px">
+<div class="container-fluid">
+    <div class="row">
+      <div>
+          <img src="../assets/img/learndot-white.png" style="float:left"/>
+      </div>
+      <div>
+        <h2 style="float:left; padding-left:20px; color:white; padding-top:10px"> / Course Retakes</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Course Retakes daily (90 days)
+          </div>
+          <div class="chart-stage" id="chart_01">
+          </div>
+          <div class="chart-notes">
+            We should expect the line to increase
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Course Retakes daily by Organization URL (90 days)
+          </div>
+          <div class="chart-stage" id="chart_02">
+          </div>
+          <div class="chart-notes">
+            Useful to see which organization if using the feature the most
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Course Retakes vs Course Completions daily (90 days)
+          </div>
+          <div class="chart-stage" id="chart_03">
+          </div>
+          <div class="chart-notes">
+            If (blue) catches (red), people are typically taking a course more than once.
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            User Signins vs Couse Completions (90 days)
+          </div>
+          <div class="chart-stage" id="chart_04">
+          </div>
+          <div class="chart-notes">
+            How many people login to look vs take a course.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <hr>
+
+    <p class="small text-muted">Built with &#9829; by <a href="https://keen.io">Keen IO</a></p>
+
+  </div>
+
+  <script type="text/javascript" src="../assets/lib/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="../assets/lib/holderjs/holder.js"></script>
+  <script>
+    Holder.add_theme("white", { background:"#fff", foreground:"#a7a7a7", size:10 });
+  </script>
+
+  <script type="text/javascript" src="../assets/lib/keen-js/dist/keen.min.js"></script>
+  <script type="text/javascript" src="../assets/js/meta.js"></script>
+
+
+<!--Start scripts for Charts-->
+
+<!--Chart_01-->
+<script>
+var client = new Keen({
+  projectId: "56b4f0202fd4b10483c74f55",
+  readKey: "c07f53441ecce154a90f3286fa5256d006fa8b30de697e36303c6c7e7bdbbd81280c304de8927b5b6f908439538b06193ca3c6756d3a21f563a82236b44fcc727ecacceadb6a7f3e06842c34b1ae6802d296089bcb9ee04a8b5a09fb6a1a64d7"
+
+});
+
+Keen.ready(function(){
+
+  var query = new Keen.Query("count", {
+    eventCollection: "Retake Course",
+    interval: "daily",
+    timeframe: "this_90_days",
+    timezone: "UTC"
+  });
+
+  client.draw(query, document.getElementById("chart_01"), {
+    // Custom configuration here
+  });
+
+});
+
+</script>
+
+<!--Chart_02-->
+<script>
+var client = new Keen({
+  projectId: "56b4f0202fd4b10483c74f55",
+  readKey: "c07f53441ecce154a90f3286fa5256d006fa8b30de697e36303c6c7e7bdbbd81280c304de8927b5b6f908439538b06193ca3c6756d3a21f563a82236b44fcc727ecacceadb6a7f3e06842c34b1ae6802d296089bcb9ee04a8b5a09fb6a1a64d7"
+
+});
+
+Keen.ready(function(){
+
+  var query = new Keen.Query("count", {
+    eventCollection: "Retake Course",
+    groupBy: [
+    "user.traits.organizationURL"
+],
+    interval: "daily",
+    timeframe: "this_90_days",
+    timezone: "UTC"
+  });
+
+  client.draw(query, document.getElementById("chart_02"), {
+    width: "100%",
+    chartArea: {width:"70%"},
+  });
+
+});
+</script>
+
+<!--Chart_03-->
+<script>
+var client = new Keen({
+  projectId: "56b4f0202fd4b10483c74f55",
+  readKey: "c07f53441ecce154a90f3286fa5256d006fa8b30de697e36303c6c7e7bdbbd81280c304de8927b5b6f908439538b06193ca3c6756d3a21f563a82236b44fcc727ecacceadb6a7f3e06842c34b1ae6802d296089bcb9ee04a8b5a09fb6a1a64d7"
+
+});
+
+Keen.ready(function(){
+  // use a variable to ensure timeframe & interval for both queries match
+  var interval = "daily"
+  var timeframe = "last_30_days"
+
+  var retakes = new Keen.Query("count", {
+    eventCollection: "Retake Course",
+    interval: "daily",
+    timeframe: "this_90_days",
+    timezone: "UTC"
+  });
+
+  var course_completions = new Keen.Query("count", {
+    eventCollection: "Completed Course",
+    interval: "daily",
+    timeframe: "this_90_days",
+    timezone: "UTC"
+  });
+
+  var chart = new Keen.Dataviz()
+    .el(document.getElementById("chart_03"))
+    .chartType("areachart")
+    .chartOptions({
+      hAxis: {
+        format:'MMM d',
+        gridlines:  {count: 12}
+      }
+    })
+    .prepare();
+
+  client.run([retakes, course_completions], function(err, res){ // run the queries
+
+    var result1 = res[0].result  // data from first query
+    var result2 = res[1].result  // data from second query
+    var data = []  // place for combined results
+    var i=0
+
+    while (i < result1.length) {
+
+        data[i]={ // format the data so it can be charted
+            timeframe: result1[i]["timeframe"],
+            value: [
+                { category: "Retakes", result: result1[i]["value"] },
+                { category: "Courses Completed", result: result2[i]["value"] }
+            ]
+        }
+        if (i == result1.length-1) { // chart the data
+        chart
+          .parseRawData({ result: data })
+          .render();
+        }
+        i++;
+    }
+  });
+});
+
+</script>
+
+<!--Chart_04-->
+<script>
+var client = new Keen({
+  projectId: "56b4f0202fd4b10483c74f55",
+  readKey: "c07f53441ecce154a90f3286fa5256d006fa8b30de697e36303c6c7e7bdbbd81280c304de8927b5b6f908439538b06193ca3c6756d3a21f563a82236b44fcc727ecacceadb6a7f3e06842c34b1ae6802d296089bcb9ee04a8b5a09fb6a1a64d7"
+
+});
+
+Keen.ready(function(){
+  // use a variable to ensure timeframe & interval for both queries match
+  var interval = "daily"
+  var timeframe = "last_30_days"
+
+  var user_signins = new Keen.Query("count", {
+    eventCollection: "User Signin",
+    interval: "daily",
+    timeframe: "this_90_days",
+    timezone: "UTC"
+  });
+
+  var course_completions = new Keen.Query("count", {
+    eventCollection: "Completed Course",
+    interval: "daily",
+    timeframe: "this_90_days",
+    timezone: "UTC"
+  });
+
+  var chart = new Keen.Dataviz()
+    .el(document.getElementById("chart_04"))
+    .chartType("areachart")
+    .chartOptions({
+      hAxis: {
+        format:'MMM d',
+        gridlines:  {count: 12}
+      }
+    })
+    .prepare();
+
+  client.run([user_signins, course_completions], function(err, res){ // run the queries
+
+    var result1 = res[0].result  // data from first query
+    var result2 = res[1].result  // data from second query
+    var data = []  // place for combined results
+    var i=0
+
+    while (i < result1.length) {
+
+        data[i]={ // format the data so it can be charted
+            timeframe: result1[i]["timeframe"],
+            value: [
+                { category: "User Signins", result: result1[i]["value"] },
+                { category: "Courses Completed", result: result2[i]["value"] }
+            ]
+        }
+        if (i == result1.length-1) { // chart the data
+        chart
+          .parseRawData({ result: data })
+          .render();
+        }
+        i++;
+    }
+  });
+});
+
+</script>
+
+<script>
+    setInterval(function() {
+                window.location.reload();
+                }, 300000);
+</script>
+
+</body>
+</html>
